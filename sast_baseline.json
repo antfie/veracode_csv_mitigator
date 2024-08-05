@@ -1,0 +1,52 @@
+{
+   "_links": {
+      "root": {
+         "href": "/",
+         "name": "",
+         "templated": false
+      },
+      "self": {
+         "href": "/scans/fec50f29-625d-4114-b3a2-f4804c4c7dcf/findings",
+         "name": "",
+         "templated": false
+      },
+      "help": {
+         "href": "https://help.veracode.com/reader/tS9CaFwL4_lbIEWWomsJoA/ovfZGgu96UINQxIuTqRDwg",
+         "name": "",
+         "templated": false
+      },
+      "create": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "start": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "details": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "upload": {
+         "href": "",
+         "name": "",
+         "templated": false
+      },
+      "cancel": {
+         "href": "",
+         "name": "",
+         "templated": false
+      }
+   },
+   "scan_id": "fec50f29-625d-4114-b3a2-f4804c4c7dcf",
+   "scan_status": "SUCCESS",
+   "message": "Scan successful. Results size: 42 bytes",
+   "modules": [
+      "Python files within veracode-auto-pack-veracode_csv_mitigator-python.zip"
+   ],
+   "modules_count": 1,
+   "selected_modules": []
+}

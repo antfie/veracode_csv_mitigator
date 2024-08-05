@@ -1,0 +1,6 @@
+.idea
+*.pyc
+data/cache.csv
+data/findings.json
+scan
+.run/

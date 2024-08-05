@@ -1,0 +1,2 @@
+application_name,sandbox_name,cwe,flaw_id,mitigate_by_design,false_positive,accept_risk,approve,reject
+App Name,Sandbox Name,CWE ID,Findings Flaw ID,Mitigate By Design,False Positive,Accept The Risk,Approve,Reject
