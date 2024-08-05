@@ -106,7 +106,7 @@ def main(
         api,
         candidates,
         number_of_threads,
-        debug=True,
+        debug=False,
     )
 
     process_candidates(

@@ -43,6 +43,28 @@ The tool can be used to apply a single action or multiple mitigation actions per
 
 It is also possible to propose an "Accept the Risk" action prior to "Approve" if that is how your organisation operates.
 
+## Example
+
+```bash
+15:37:48] Using 10 threads                                                     
+           Testing API connectivity...                                          
+Identifying 2 applications... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Processing 2 scans... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+[15:38:01] There are 2 flaws to mitigate:                                       
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Application Profile      ┃ Sandbox  ┃ Flaw ID ┃ Actions                    ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Manual Packaging         │ verademo │ 291     │ Mitigate By Design,Approve │
+│ Java 2nd Order Test Case │ *Policy* │ 1       │ Mitigate By Design,Approve │
+└──────────────────────────┴──────────┴─────────┴────────────────────────────┘
+Apply mitigations? [y/n]: y
+[15:38:06] Mitigating flaw #291 in application profile 'Manual Packaging'...    
+           Mitigating flaw #1 in application profile 'Java 2nd Order Test       
+           Case'...                                                             
+Mitigating 2 flaws... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+```
+
+
 ## Authenticating With The Veracode APIs
 
 This tool makes use of the Veracode APIs ([listed below](#outbound-api-calls)). You will need Veracode API credentials
