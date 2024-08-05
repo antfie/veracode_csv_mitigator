@@ -28,11 +28,14 @@ class MitigationCandidate:
         self.reject = reject
         self.actions = OrderedDict()
 
-    def findings_key(self) -> str:
-        return f"{self.application_guid}:{self.sandbox_guid}"
+    def app_name_key(self) -> str:
+        return f"{self.application_name.strip()}§{None if self.sandbox_name is None else self.sandbox_name.strip()}"
+
+    def app_guid_key(self) -> str:
+        return f"{self.application_guid}§{self.sandbox_guid}"
 
     def flaw_key(self) -> str:
-        return f"{self.application_name.lower().strip()}:{self.flaw_id}"
+        return f"{self.application_name.strip()}§{self.flaw_id}"
 
     def get_formatted_actions_to_perform(self):
         formatted_action_names = {

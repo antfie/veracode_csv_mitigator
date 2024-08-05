@@ -21,7 +21,7 @@ def bulk_mitigate(
                 candidate.flaw_id,
                 action,
                 comment,
-                candidate.sandbox_guid
+                candidate.sandbox_guid,
             )
             pass
 

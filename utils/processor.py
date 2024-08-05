@@ -18,11 +18,11 @@ def get_flaws(
         with open("data/findings.json", "r") as d:
             return load(d)
 
-    scans_to_find = list(set([x.findings_key() for x in candidates]))
+    scans_to_find = list(set([x.app_guid_key() for x in candidates]))
     flaws = {}
 
     def process_application(scan: str):
-        application_guid, sandbox_guid = scan.split(":")
+        application_guid, sandbox_guid = scan.split("§")
 
         if sandbox_guid == str(None):
             sandbox_guid = None
@@ -58,7 +58,7 @@ def process_candidates(
     findings: dict[str, dict],
 ):
     for candidate in candidates:
-        found_findings = findings[candidate.findings_key()]
+        found_findings = findings[candidate.app_guid_key()]
 
         if found_findings is None:
             sandbox_text = ""

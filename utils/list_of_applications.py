@@ -64,9 +64,19 @@ class ApplicationCache:
                 )
                 self._entries.append(info)
 
-    def get_by_application_name(self, application_name: str) -> AppSandboxInfo:
+    def get_by_app_key(self, app_key: str) -> AppSandboxInfo:
+        application_name, sandbox_name = app_key.split("§")
+
+        if sandbox_name == str(None):
+            for entry in self._entries:
+                if entry.application_name == app_key:
+                    return entry
+
         for entry in self._entries:
-            if entry.application_name == application_name:
+            if (
+                entry.application_name == application_name
+                and entry.sandbox_name == sandbox_name
+            ):
                 return entry
 
         return None
@@ -89,6 +99,28 @@ def load_applications_from_file(applications_file_path: str) -> list[str]:
     return application_names
 
 
+def populate_app_details(
+    candidates: list[MitigationCandidate], app_and_sandbox_guids: list[AppSandboxInfo]
+):
+    for c in candidates:
+        for i in app_and_sandbox_guids:
+            if c.application_name.lower() != i.application_name.lower():
+                continue
+
+            # If we are not using a sandbox then an application GUID is fine
+            if c.sandbox_name is None:
+                c.application_guid = i.application_guid
+
+            if i.sandbox_name is None:
+                continue
+
+            # If we have a sandbox then set both application GUID and sandbox GUID
+            # This way if we do not find the desired sandbox will not assume no-sandbox
+            elif c.sandbox_name.lower() == i.sandbox_name.lower():
+                c.application_guid = i.application_guid
+                c.sandbox_guid = i.sandbox_guid
+
+
 def acquire_application_info(
     console: Console,
     api: API,
@@ -98,19 +130,20 @@ def acquire_application_info(
 ):
     cache = ApplicationCache(application_cache_file_path)
     app_and_sandbox_guids: list[AppSandboxInfo] = []
-    applications_to_resolve = []
+    app_keys_to_resolve = []
 
-    for application_name in set([c.application_name for c in candidates]):
-        cached = cache.get_by_application_name(application_name)
+    for app_key in set([c.app_name_key() for c in candidates]):
+        cached = cache.get_by_app_key(app_key)
 
         if cached is not None:
             app_and_sandbox_guids.append(cached)
         else:
-            applications_to_resolve.append(application_name)
+            app_keys_to_resolve.append(app_key)
 
-    if len(applications_to_resolve) > 0:
+    if len(app_keys_to_resolve) > 0:
 
-        def resolve_application_guid(application_name):
+        def resolve_application_guid(app_key: str):
+            application_name, sandbox_name = app_key.split("§")
             applications = []
 
             # The API can return results for similar named applications
@@ -134,6 +167,15 @@ def acquire_application_info(
 
             application_guid = applications[0]["guid"]
 
+            # Add the application policy
+            app_info = AppSandboxInfo(
+                application_name,
+                application_guid,
+            )
+
+            app_and_sandbox_guids.append(app_info)
+            cache.add(app_info)
+
             for sandbox in api.get_sandboxes(application_guid):
                 app_info = AppSandboxInfo(
                     application_name,
@@ -145,23 +187,14 @@ def acquire_application_info(
                 app_and_sandbox_guids.append(app_info)
                 cache.add(app_info)
 
-        application_count_pluralised = "" if len(applications_to_resolve) == 1 else "s"
+        application_count_pluralised = "" if len(app_keys_to_resolve) == 1 else "s"
 
         parallel_execute_tasks_with_progress(
             console,
-            f"Identifying {len(applications_to_resolve)} application{application_count_pluralised}...",
+            f"Identifying {len(app_keys_to_resolve)} application{application_count_pluralised}...",
             resolve_application_guid,
-            applications_to_resolve,
+            app_keys_to_resolve,
             number_of_threads,
         )
 
-    # Update the candidates with the GUIDs
-    for i in app_and_sandbox_guids:
-        for c in candidates:
-            if c.application_name != i.application_name:
-                continue
-
-            c.application_guid = i.application_guid
-
-            if c.sandbox_name == i.sandbox_name:
-                c.sandbox_guid = i.sandbox_guid
+    populate_app_details(candidates, app_and_sandbox_guids)
