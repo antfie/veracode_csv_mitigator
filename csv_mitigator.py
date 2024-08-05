@@ -24,12 +24,12 @@ def print_summary(candidates: list[MitigationCandidate]):
     table.add_column("Application Profile")
     table.add_column("Sandbox")
     table.add_column("Flaw ID")
-    table.add_column("Actions")
+    table.add_column("Actions To Take")
 
     for candidate in candidates:
         table.add_row(
             candidate.application_name,
-            candidate.sandbox_name or "*Policy*",
+            candidate.sandbox_name or "",
             str(candidate.flaw_id),
             candidate.get_formatted_actions_to_perform(),
         )

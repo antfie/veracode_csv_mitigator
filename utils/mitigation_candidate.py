@@ -46,9 +46,9 @@ class MitigationCandidate:
             "REJECTED": "Reject",
         }
 
-        return ",".join(
+        return ", ".join(
             [formatted_action_names[action] for action in self.actions.keys()]
-        )
+        ).strip()
 
     def find_matching_flaw(self, findings: dict):
         for finding in findings:
