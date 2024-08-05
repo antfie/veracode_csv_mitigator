@@ -1,3 +1,3 @@
-App Name,Sandbox Name,CWE ID,Findings Flaw ID,False Positive,Accept The Risk,Approve,Reject,URL
-Manual Packaging,verademo,78,291,,,,Nope,https://analysiscenter.veracode.com/auth/index.jsp#ReviewResultsAllFlaws:92479:2203639:38330427:38298323:38313973::6485786
-Java 2nd Order Test Case,,89,1,,,,Nope,https://analysiscenter.veracode.com/auth/index.jsp#ReviewResultsStaticFlaws:92479:2175773:37413670:37381804:37397454:::6414507
+App Name,Sandbox Name,CWE ID,Findings Flaw ID,Mitigate By Design,False Positive,Accept The Risk,Approve,Reject,URL
+Manual Packaging,verademo,78,291,,FP,,Approved,,https://analysiscenter.veracode.com/auth/index.jsp#ReviewResultsAllFlaws:92479:2203639:38330427:38298323:38313973::6485786
+Java 2nd Order Test Case,,89,1,,,,,Nope,https://analysiscenter.veracode.com/auth/index.jsp#ReviewResultsStaticFlaws:92479:2175773:37413670:37381804:37397454:::6414507

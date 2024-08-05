@@ -38,11 +38,7 @@ class TestListOfApplications(unittest.TestCase):
             )
         ]
 
-        app_infos = [
-            AppSandboxInfo(
-                application_name, application_guid
-            )
-        ]
+        app_infos = [AppSandboxInfo(application_name, application_guid)]
 
         populate_app_details(candidates, app_infos)
 

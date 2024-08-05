@@ -42,7 +42,7 @@ class MitigationCandidate:
             "APPDESIGN": "Mitigate By Design",
             "FP": "False Positive",
             "ACCEPTRISK": "Accept The Risk",
-            "ACCEPTED": "Accept",
+            "ACCEPTED": "Approve",
             "REJECTED": "Reject",
         }
 
