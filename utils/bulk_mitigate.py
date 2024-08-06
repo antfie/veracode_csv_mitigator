@@ -2,6 +2,7 @@ from utils.api import API
 from utils.mitigation_candidate import MitigationCandidate
 from utils.parallel import parallel_execute_tasks_with_progress
 from rich.console import Console
+from html import escape
 
 
 def bulk_mitigate(
@@ -20,7 +21,7 @@ def bulk_mitigate(
                 candidate.application_guid,
                 candidate.flaw_id,
                 action,
-                comment,
+                escape(comment),
                 candidate.sandbox_guid,
             )
             pass
