@@ -57,5 +57,6 @@ java -jar scan/veracode-api.jar \
      -scanpollinginterval 30 \
      -scantimeout 15
 
+
 echo -e "\n${CYAN}Generating SBOMs...${NC}"
-./scan/veracode sbom --type archive --source scan/veracode-auto-pack-veracode_csv_mitigator-python.zip --output scan/src.sbom.json
+./scan/veracode sbom --type archive --source $zipFilePath --output scan/src.sbom.json
