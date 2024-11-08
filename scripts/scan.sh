@@ -14,9 +14,7 @@ rm -f -- scan/*.json
 
 
 echo -e "\n${CYAN}Dependency check...${NC}"
-
-# 65232 has no update
-pipenv check -i 65232
+pipenv check
 
 
 echo -e "\n${CYAN}Downloading the Veracode CLI...${NC}"
@@ -27,8 +25,8 @@ set -e
 cd ..
 
 
-echo -e "${CYAN}Packaging for SAST scanning...${NC}"
-./scan/veracode package --trust --source . --output scan/
+echo -e "\n${CYAN}Packaging for SAST scanning...${NC}"
+./scan/veracode package --trust --source . --output scan --debug
 
 
 echo -e "\n${CYAN}SAST Scanning with Veracode...${NC}"
