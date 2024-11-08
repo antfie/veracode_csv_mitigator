@@ -1,3 +1,5 @@
+![GitHub License](https://img.shields.io/github/license/antfie/veracode_csv_mitigator)
+
 # Veracode SAST Bulk CSV Mitigator
 
 **Note this tool is not an official Veracode product. It comes with no support or warranty.**
