@@ -6,12 +6,12 @@
          "templated": false
       },
       "self": {
-         "href": "/scans/fec50f29-625d-4114-b3a2-f4804c4c7dcf/findings",
+         "href": "/scans/55d02edc-f406-4961-83a3-42fc650acf57/findings",
          "name": "",
          "templated": false
       },
       "help": {
-         "href": "https://help.veracode.com/reader/tS9CaFwL4_lbIEWWomsJoA/ovfZGgu96UINQxIuTqRDwg",
+         "href": "https://docs.veracode.com/",
          "name": "",
          "templated": false
       },
@@ -41,12 +41,14 @@
          "templated": false
       }
    },
-   "scan_id": "fec50f29-625d-4114-b3a2-f4804c4c7dcf",
+   "scan_id": "55d02edc-f406-4961-83a3-42fc650acf57",
    "scan_status": "SUCCESS",
    "message": "Scan successful. Results size: 42 bytes",
    "modules": [
       "Python files within veracode-auto-pack-veracode_csv_mitigator-python.zip"
    ],
    "modules_count": 1,
-   "selected_modules": []
+   "selected_modules": [
+      "Python files within veracode-auto-pack-veracode_csv_mitigator-python.zip"
+   ]
 }
