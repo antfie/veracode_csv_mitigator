@@ -20,7 +20,7 @@ pipenv check
 echo -e "\n${CYAN}Downloading the Veracode CLI...${NC}"
 cd scan
 set +e # Ignore failure which happens if the CLI is the current latest version
-
+curl -fsS https://tools.veracode.com/veracode-cli/install | sh
 set -e
 cd ..
 
