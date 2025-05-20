@@ -14,7 +14,7 @@ pysocks==1.7.1; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2
 requests[socks]==2.32.3; python_version >= '3.8'
 requests-toolbelt==1.0.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'
 rich==13.9.4; python_full_version >= '3.8.0'
-setuptools==75.3.0; python_version >= '3.8'
+setuptools==78.1.1; python_version >= '3.8'
 urllib3==1.26.20; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'
 veracode-api-py==0.9.55; python_version >= '3.8'
 veracode-api-signing==24.11.0; python_version >= '3.7'
