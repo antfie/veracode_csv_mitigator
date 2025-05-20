@@ -20,13 +20,18 @@ pipenv check
 echo -e "\n${CYAN}Downloading the Veracode CLI...${NC}"
 cd scan
 set +e # Ignore failure which happens if the CLI is the current latest version
-curl -fsS https://tools.veracode.com/veracode-cli/install | sh
+
 set -e
 cd ..
 
 
 echo -e "\n${CYAN}Packaging for SAST scanning...${NC}"
+curl -fsS https://tools.veracode.com/veracode-cli/install | sh
 ./scan/veracode package --trust --source . --output scan/packages
+
+
+
+
 zipFilePath="scan/packages/veracode-auto-pack-veracode_csv_mitigator-python.zip"
 entrypointModules="Python files within veracode-auto-pack-veracode_csv_mitigator-python.zip"
 
